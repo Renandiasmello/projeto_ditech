@@ -39,6 +39,23 @@ class ReservaModel
         return $dados;
     }
 
+    public function verificaReservaModel($id_sala, $hora_inicial, $data)
+    {
+        $sql = $this->conn->prepare("SELECT * FROM reservas_salas 
+                                              WHERE (hora_inicial <=:hora_inicial AND hora_final >=:hora_inicial)
+                                               AND id_sala=:id_sala 
+                                               AND data=:data 
+                                              ORDER BY hora_inicial");
+        $sql->bindValue(':id_sala', $id_sala, PDO::PARAM_INT);
+        $sql->bindValue(':hora_inicial', $hora_inicial, PDO::PARAM_STR);
+        $sql->bindValue(':data', $data, PDO::PARAM_STR);
+        $sql->execute();
+
+        $dados = $sql->fetch(PDO::FETCH_OBJ);
+
+        return $dados;
+    }
+
     public function deleteModel($id)
     {
         $sql = $this->conn->prepare("DELETE FROM reservas_salas WHERE id=:id");
