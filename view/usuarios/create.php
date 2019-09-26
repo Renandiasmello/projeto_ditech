@@ -27,7 +27,7 @@
                     <div class="control-group">
                         <label class="control-label">Login</label>
                         <div class="controls">
-                            <input type="text" name="form-control login" class="form-control input1" placeholder="Login" value="<?php echo htmlentities($login); ?>" required>
+                            <input type="text" name="login" class="form-control input1" placeholder="Login" value="<?php echo htmlentities($login); ?>" required>
                             <span class="help-inline"></span>
                         </div>
                     </div>

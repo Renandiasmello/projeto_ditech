@@ -15,7 +15,7 @@ $conn = new Conexao();
 $conn = $conn->conectar();
 $usuarioManipulaController = new UsuarioManipulaController();
 
-$dados = $usuarioManipulaController->validaLogin($login, $senha);
+$dados = $usuarioManipulaController->validaLogin($login, md5($senha));
 
 if($dados){
     $_SESSION['login'] = $login;

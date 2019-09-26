@@ -12,7 +12,7 @@ class UsuarioModel {
     }
 
     public function createModel($nome, $login, $senha) {
-        $sql = $this->conn->prepare('INSERT INTO usuarios (nome, login, senha) VALUES (:nome, :login, :senha);');
+        $sql = $this->conn->prepare('INSERT INTO usuarios (nome, login, senha) VALUES (:nome, :login, md5(:senha));');
         $sql->bindValue(':nome', $nome, PDO::PARAM_STR);
         $sql->bindValue(':login', $login, PDO::PARAM_STR);
         $sql->bindValue(':senha', $senha, PDO::PARAM_STR);
@@ -38,7 +38,7 @@ class UsuarioModel {
 
     public function updateModel($id, $nome, $login, $senha) {
 
-        $sql = $this->conn->prepare("UPDATE usuarios SET nome=:nome, login=:login, senha=:senha WHERE id=:id LIMIT 1");
+        $sql = $this->conn->prepare("UPDATE usuarios SET nome=:nome, login=:login, senha=md5(:senha) WHERE id=:id LIMIT 1");
         $sql->bindValue(':id', $id, PDO::PARAM_INT);
         $sql->bindValue(':nome', $nome, PDO::PARAM_STR);
         $sql->bindValue(':login', $login, PDO::PARAM_STR);
