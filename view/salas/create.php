@@ -19,11 +19,11 @@
                     <div class="control-group">
                         <label class="control-label">Descrição</label>
                         <div class="controls">
-                            <input type="text" name="descricao" placeholder="Descrição" value="<?php echo htmlentities($descricao); ?>">
+                            <input type="text" name="descricao" class="form-control input1" placeholder="Descrição" value="<?php echo htmlentities($descricao); ?>" required>
                             <span class="help-inline"></span>
                         </div>
                     </div>
-
+                    <br>
                     <div class="form-actions">
                         <input type="hidden" name="form-submitted" value="1">
                         <button type="submit" class="btn btn-success">Cadastrar</button>

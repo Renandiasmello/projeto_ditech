@@ -18,6 +18,10 @@ class MainController {
         $this->reservaManipulaController = new ReservaManipulaController();
     }
 
+    public function cadastreSe(){
+        $this->teste();
+    }
+
     public function request() {
 
         $op = isset($_GET['op']) ? $_GET['op'] : null;
@@ -65,6 +69,9 @@ class MainController {
                     break;
                 case 'novo':
                     $this->create();
+                    break;
+                case 'teste':
+                    $this->teste();
                     break;
                 case 'editar':
                     $this->update();
@@ -259,6 +266,11 @@ class MainController {
     public function readAllUsuarios() {
         $dados = $this->usuarioManipulaController->readAllManipula();
         include_once 'view'. DS . 'usuarios' . DS . 'readAll.php';
+    }
+
+    public function teste() {
+        //$dados = $this->usuarioManipulaController->readAllManipula();
+        include_once 'cadastre_se' . DS . 'cadastro.php';
     }
 
     public function logout() {

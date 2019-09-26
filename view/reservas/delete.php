@@ -19,14 +19,14 @@
                     <div class="control-group">
                         <label class="control-label">Sala</label>
                         <div class="controls">
-                            <input type="text" name="sala" placeholder="Sala" value="<?php echo htmlentities($dados->sala); ?>" disabled>
+                            <input type="text" class="form-control input1" name="sala" placeholder="Sala" value="<?php echo htmlentities($dados->sala); ?>" disabled>
                             <span class="help-inline"></span>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Data</label>
                         <div class="controls">
-                            <input type="date" name="data" placeholder="dd/mm/aaaa" value="<?php echo htmlentities($dados->data); ?>" disabled>
+                            <input type="date" name="data" class="form-control input2" placeholder="dd/mm/aaaa" value="<?php echo htmlentities($dados->data); ?>" disabled>
                             <span class="help-inline"></span>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         <label class="control-label">Horário Inicial</label>
 
                         <div class="controls">
-                            <input type="time" name="hora_inicial" placeholder="hh:mm" value="<?php echo htmlentities($dados->hora_inicial); ?>" disabled>
+                            <input type="time" name="hora_inicial" class="form-control input2" placeholder="hh:mm" value="<?php echo htmlentities($dados->hora_inicial); ?>" disabled>
                             <span class="help-inline"></span>
                         </div>
                     </div>

@@ -19,7 +19,7 @@
                     <div class="control-group">
                         <label class="control-label">Descrição</label>
                         <div class="controls">
-                            <input type="text" name="descricao" placeholder="Descrição" value="<?php echo htmlentities($dados->descricao); ?>">
+                            <input type="text" name="descricao" class="form-control input1" placeholder="Descrição" value="<?php echo htmlentities($dados->descricao); ?>">
                             <span class="help-inline"></span>
                         </div>
                     </div>

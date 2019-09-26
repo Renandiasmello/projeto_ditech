@@ -19,14 +19,14 @@
                     <div class="control-group">
                         <label class="control-label">Name</label>
                         <div class="controls">
-                            <input type="text" name="nome" placeholder="Nome" value="<?php echo htmlentities($dados->nome); ?>">
+                            <input type="text" name="nome" class="form-control input1" placeholder="Nome" value="<?php echo htmlentities($dados->nome); ?>">
                             <span class="help-inline"></span>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Login</label>
                         <div class="controls">
-                            <input type="text" name="login" placeholder="Login" value="<?php echo htmlentities($dados->login); ?>">
+                            <input type="text" name="login" class="form-control input1" placeholder="Login" value="<?php echo htmlentities($dados->login); ?>">
                             <span class="help-inline"></span>
                         </div>
                     </div>

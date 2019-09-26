@@ -18,20 +18,25 @@
             <form class="form-horizontal" action="" method="post">
                 <?php $id_sala = isset($id_sala) ? $id_sala : null;
                       $data = isset($data) ? $data : date('d-m-Y'); ?>
-                <div class="control-group">
+                <div class="form-group">
                     <fieldset>
+                        <label class="col-md-2 control-label" for="sala">Selecione uma sala <h11>*</h11></label>
                         <legend>Consulte a disponibilidade por Sala e Dia</legend>
-                        <div class="controls">
-                            <select id="sala" name="sala">
-                                <option value="">Selecione uma sala</option>
+                        <div class="col-md-3">
+                            <select required id="sala" name="sala" class="form-control">
+                                <option value="">Selecione</option>
                                 <?php foreach ($dados as $key => $dado): ?>
-                                <?php $selected = ($id_sala && $dado->id == $id_sala ) ? 'selected' : '' ;?>
+                                    <?php $selected = ($id_sala && $dado->id == $id_sala ) ? 'selected' : '' ;?>
                                     <?php echo "<option value=\"$dado->id\" $selected>$dado->descricao</option>"; ?>
                                 <?php endforeach; ?>
                             </select>
-                            <input type="date" id="data" name="data" placeholder="Data" value="<?php echo (isset($data) ? $data : date('d-m-Y')) ?>">
+                        </div>
+                        <label class="col-md-1 control-label" for="data">Data <h11>*</h11></label>
+                        <div class="col-md-2">
+                            <input id="data" name="data" placeholder="00/00/0000" value="<?php echo (isset($data) ? $data : date('d-m-Y')) ?>" class="form-control input-md" required="" type="date" maxlength="11">
+                        </div>
+                        <div class="col-md-2">
                             <button type="submit" class="btn btn-success buscar">Consultar</button>
-                            <span class="help-inline"></span>
                         </div>
                     </fieldset>
                 </div><br>

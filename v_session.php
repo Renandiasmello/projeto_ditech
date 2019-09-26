@@ -13,6 +13,14 @@ $logado = $_SESSION['login'];
 $nome_sessao = $_SESSION['nome'];
 
 ?>
+<style type="text/css">
+    .input1 {
+        width: 385px!important;
+    }
+    .input2 {
+        width: 150px!important;
+    }
+</style>
 <br>
 <div class="container">
     <div class="text-right">
