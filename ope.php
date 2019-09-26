@@ -26,5 +26,7 @@ if($dados){
 } else {
     unset($_SESSION['login']);
     unset($_SESSION['senha']);
+    unset($_SESSION['id_usuario']);
+    unset($_SESSION['nome']);
     header('location:index.php');
 }
