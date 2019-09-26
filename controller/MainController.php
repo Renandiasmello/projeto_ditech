@@ -58,6 +58,9 @@ class MainController {
                 case 'reservarSala':
                     $this->createReserva();
                     break;
+                case 'deletarReserva':
+                    $this->deleteReserva();
+                    break;
                 case 'novo':
                     $this->create();
                     break;
@@ -107,17 +110,35 @@ class MainController {
         $id_usuario = isset($_GET['id_usuario']) ? trim($_GET['id_usuario']) : null;
         $hora_inicial = isset($_GET['hi']) ? trim($_GET['hi']) : null;
         $data = isset($_GET['data']) ? trim($_GET['data']) : null;
-//        if (isset($_POST['form-submitted'])) {
-//
-//            $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : null;
-//
-//            $dados = $this->reservaManipulaController->createManipula($descricao);
-//            header('Location: index.php?op=listarSalas');
-//
-//            return $dados;
-//        }
+        if (isset($_POST['form-submitted'])) {
+//var_dump($_POST);exit;
+            $id_sala = isset($_POST['id_sala']) ? trim($_POST['id_sala']) : null;
+            $id_usuario = isset($_POST['id_usuario']) ? trim($_POST['id_usuario']) : null;
+            $hora_inicial = isset($_POST['hora_inicial']) ? trim($_POST['hora_inicial']) : null;
+            $hora_final = ((substr($hora_inicial,0,2)+1) < 10 ? '0'.(substr($hora_inicial,0,2)+1) : (substr($hora_inicial,0,2)+1) )
+                            . ':' .substr($hora_inicial,3,2);
+            $data = isset($_POST['data']) ? trim($_POST['data']) : null;
+
+            $dados = $this->reservaManipulaController->createManipula($id_sala, $id_usuario, $hora_inicial, $hora_final, $data);
+            header('Location: index.php?op=manageReserva');
+
+            //return $dados;
+        }
 
         include_once 'view'. DS . 'reservas' . DS . 'create.php';
+    }
+
+    public function deleteReserva() {
+
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+
+        if (isset($_POST['form-submitted'])) {
+            $dados = $this->reservaManipulaController->deleteManipula($id);
+            header('Location: index.php?op=manageReserva');
+        }
+
+        $dados = $this->reservaManipulaController->readManipula($id);
+        include_once 'view'. DS . 'reservas' . DS . 'delete.php';
     }
 
     public function createSala() {
