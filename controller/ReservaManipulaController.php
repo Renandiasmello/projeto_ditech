@@ -30,6 +30,12 @@ class ReservaManipulaController extends ReservaModel
         return $dados;
     }
 
+    public function verificaReservaUsuarioManipula($id_usuario, $hora_inicial, $data)
+    {
+        $dados = $this->reservaModel->verificaReservaUsuarioModel($id_usuario, $hora_inicial, $data);
+        return $dados;
+    }
+
     public function deleteManipula($id)
     {
         $this->reservaModel->deleteModel($id);

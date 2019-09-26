@@ -45,12 +45,15 @@
                     <div class="message_reserva input1" style="display: none">
                         <div class="alert alert-danger">Esse horário já possui reserva.</div>
                     </div>
+                    <div class="message_reserva_user input1" style="display: none">
+                        <div class="alert alert-danger">Você já possui reserva em outra sala.</div>
+                    </div>
                     <div class="message_disponivel input1" style="display: none">
                         <div class="alert alert-success">Horário Disponivel :)</div>
                     </div>
                     <div class="form-actions">
                         <input type="hidden" name="form-submitted" value="1">
-                        <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['id_usuario']?>">
+                        <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $_SESSION['id_usuario']?>">
                         <button type="submit" class="btn btn-success cadastrar">Cadastrar</button>
                         <a class="btn btn-default" href="home.php?op=manageReserva">Voltar</a>
                     </div>
