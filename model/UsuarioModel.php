@@ -1,17 +1,19 @@
 <?php
 
-require_once 'model'.DS.'Conexao.php';
+require_once 'model' . DS . 'Conexao.php';
 
-class UsuarioModel {
-
+class UsuarioModel
+{
     private $conn;
 
-    public function __construct() {
+    public function __construct()
+    {
         $conn = new Conexao();
         $this->conn = $conn->conectar();
     }
 
-    public function createModel($nome, $login, $senha) {
+    public function createModel($nome, $login, $senha)
+    {
         $sql = $this->conn->prepare('INSERT INTO usuarios (nome, login, senha) VALUES (:nome, :login, md5(:senha));');
         $sql->bindValue(':nome', $nome, PDO::PARAM_STR);
         $sql->bindValue(':login', $login, PDO::PARAM_STR);
@@ -19,50 +21,58 @@ class UsuarioModel {
         $sql->execute();
     }
 
-    public function readModel($id) {
+    public function readModel($id)
+    {
         $sql = $this->conn->prepare("SELECT * FROM usuarios WHERE id=:id");
         $sql->bindValue(':id', $id, PDO::PARAM_INT);
         $sql->execute();
+
         $dados = $sql->fetch(PDO::FETCH_OBJ);
+
         return $dados;
     }
 
-    public function validaLoginModel($login, $senha) {
+    public function validaLoginModel($login, $senha)
+    {
         $sql = $this->conn->prepare("SELECT * FROM usuarios WHERE login=:login AND senha=:senha");
         $sql->bindValue(':login', $login, PDO::PARAM_STR);
         $sql->bindValue(':senha', $senha, PDO::PARAM_STR);
         $sql->execute();
+
         $dados = $sql->fetch(PDO::FETCH_OBJ);
+
         return $dados;
     }
 
-    public function updateModel($id, $nome, $login, $senha) {
-
+    public function updateModel($id, $nome, $login, $senha)
+    {
         $sql = $this->conn->prepare("UPDATE usuarios SET nome=:nome, login=:login, senha=md5(:senha) WHERE id=:id LIMIT 1");
         $sql->bindValue(':id', $id, PDO::PARAM_INT);
         $sql->bindValue(':nome', $nome, PDO::PARAM_STR);
         $sql->bindValue(':login', $login, PDO::PARAM_STR);
         $sql->bindValue(':senha', $senha, PDO::PARAM_STR);
         $sql->execute();
-        
+
     }
 
-    public function deleteModel($id) {
+    public function deleteModel($id)
+    {
         $sql = $this->conn->prepare("DELETE FROM usuarios WHERE id=:id");
         $sql->bindValue(':id', $id, PDO::PARAM_INT);
         $sql->execute();
     }
 
-    public function readAllModel() {
+    public function readAllModel()
+    {
         $sql = $this->conn->prepare("SELECT * FROM usuarios");
         $sql->execute();
 
-        $dados = array();
+        $dados = [];
+
         while ($obj = $sql->fetch(PDO::FETCH_OBJ)) {
             $dados[] = $obj;
         }
+
         return $dados;
-
     }
-
 }

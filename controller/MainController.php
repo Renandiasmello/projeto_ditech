@@ -4,21 +4,23 @@ include_once 'SalaManipulaController.php';
 include_once 'UsuarioManipulaController.php';
 include_once 'ReservaManipulaController.php';
 
-class MainController {
-
+class MainController
+{
     private $mainManipulaController = null;
     private $salaManipulaController = null;
     private $usuarioManipulaController = null;
     private $reservaManipulaController = null;
 
-    public function __construct() {
-        $this->mainManipulaController    = null;
-        $this->salaManipulaController    = new SalaManipulaController();
+    public function __construct()
+    {
+        $this->mainManipulaController = null;
+        $this->salaManipulaController = new SalaManipulaController();
         $this->usuarioManipulaController = new UsuarioManipulaController();
         $this->reservaManipulaController = new ReservaManipulaController();
     }
 
-    public function request() {
+    public function request()
+    {
 
         $op = isset($_GET['op']) ? $_GET['op'] : null;
 
@@ -73,7 +75,8 @@ class MainController {
         }
     }
 
-    public function manageReserva() {
+    public function manageReserva()
+    {
 
         $lista_horarios = array();
 
@@ -88,14 +91,15 @@ class MainController {
 
         $dados = $this->salaManipulaController->readAllManipula();
 
-        include_once 'view'. DS . 'reservas' . DS . 'manage.php';
+        include_once 'view' . DS . 'reservas' . DS . 'manage.php';
     }
 
-    public function createReserva() {
+    public function createReserva()
+    {
 
         $id_sala = isset($_GET['sala']) ? trim($_GET['sala']) : null;
         $sala = '';
-        if($id_sala){
+        if ($id_sala) {
             $dados_sala = $this->salaManipulaController->readManipula($id_sala);
             $sala = $dados_sala->descricao;
         }
@@ -109,8 +113,8 @@ class MainController {
             $id_sala = isset($_POST['id_sala']) ? trim($_POST['id_sala']) : null;
             $id_usuario = isset($_POST['id_usuario']) ? trim($_POST['id_usuario']) : null;
             $hora_inicial = isset($_POST['hora_inicial']) ? trim($_POST['hora_inicial']) : null;
-            $hora_final = ((substr($hora_inicial,0,2)+1) < 10 ? '0'.(substr($hora_inicial,0,2)+1) : (substr($hora_inicial,0,2)+1) )
-                            . ':' .substr($hora_inicial,3,2);
+            $hora_final = ((substr($hora_inicial, 0, 2) + 1) < 10 ? '0' . (substr($hora_inicial, 0, 2) + 1) : (substr($hora_inicial, 0, 2) + 1))
+                . ':' . substr($hora_inicial, 3, 2);
             $data = isset($_POST['data']) ? trim($_POST['data']) : null;
 
             $dados = $this->reservaManipulaController->createManipula($id_sala, $id_usuario, $hora_inicial, $hora_final, $data);
@@ -118,10 +122,11 @@ class MainController {
 
         }
 
-        include_once 'view'. DS . 'reservas' . DS . 'create.php';
+        include_once 'view' . DS . 'reservas' . DS . 'create.php';
     }
 
-    public function deleteReserva() {
+    public function deleteReserva()
+    {
 
         $id = isset($_GET['id']) ? $_GET['id'] : null;
 
@@ -131,10 +136,11 @@ class MainController {
         }
 
         $dados = $this->reservaManipulaController->readManipula($id);
-        include_once 'view'. DS . 'reservas' . DS . 'delete.php';
+        include_once 'view' . DS . 'reservas' . DS . 'delete.php';
     }
 
-    public function createSala() {
+    public function createSala()
+    {
 
         $descricao = '';
 
@@ -147,10 +153,11 @@ class MainController {
 
         }
 
-        include_once 'view'. DS . 'salas' . DS . 'create.php';
+        include_once 'view' . DS . 'salas' . DS . 'create.php';
     }
 
-    public function updateSala() {
+    public function updateSala()
+    {
 
         $id = isset($_GET['id']) ? $_GET['id'] : null;
         $descricao = '';
@@ -168,7 +175,8 @@ class MainController {
         include_once 'view' . DS . 'salas' . DS . 'update.php';
     }
 
-    public function deleteSala() {
+    public function deleteSala()
+    {
 
         $id = isset($_GET['id']) ? $_GET['id'] : null;
 
@@ -178,11 +186,11 @@ class MainController {
         }
 
         $dados = $this->salaManipulaController->readManipula($id);
-        include_once 'view'. DS . 'salas' . DS . 'delete.php';
+        include_once 'view' . DS . 'salas' . DS . 'delete.php';
     }
 
-    public function createUsuario() {
-
+    public function createUsuario()
+    {
         $nome = '';
         $login = '';
         $senha = '';
@@ -201,8 +209,8 @@ class MainController {
         include_once 'view' . DS . 'usuarios' . DS . 'create.php';
     }
 
-    public function updateUsuario() {
-
+    public function updateUsuario()
+    {
         $nome = '';
         $login = '';
         $senha = '';
@@ -211,21 +219,22 @@ class MainController {
         $dados = $this->usuarioManipulaController->readManipula($id);
 
         if (isset($_POST['form-submitted'])) {
-
             $nome = isset($_POST['nome']) ? trim($_POST['nome']) : null;
             $login = isset($_POST['login']) ? trim($_POST['login']) : null;
             $senha = isset($_POST['senha']) ? trim($_POST['senha']) : null;
 
             $dados = $this->usuarioManipulaController->updateManipula($id, $nome, $login, $senha);
+
             header('Location: home.php?op=listarUsuarios');
+
             return $dados;
         }
 
         include_once 'view' . DS . 'usuarios' . DS . 'update.php';
     }
 
-    public function deleteUsuario() {
-
+    public function deleteUsuario()
+    {
         $id = isset($_GET['id']) ? $_GET['id'] : null;
 
         if (isset($_POST['form-submitted'])) {
@@ -234,29 +243,35 @@ class MainController {
         }
 
         $dados = $this->usuarioManipulaController->readManipula($id);
+
         include_once 'view' . DS . 'usuarios' . DS . 'delete.php';
     }
 
-    public function readIndex() {
+    public function readIndex()
+    {
         include_once 'view' . DS . 'index.php';
     }
 
-    public function readAllSalas() {
+    public function readAllSalas()
+    {
         $dados = $this->salaManipulaController->readAllManipula();
-        include_once 'view'. DS . 'salas' . DS . 'readAll.php';
+
+        include_once 'view' . DS . 'salas' . DS . 'readAll.php';
     }
 
-    public function readAllUsuarios() {
+    public function readAllUsuarios()
+    {
         $dados = $this->usuarioManipulaController->readAllManipula();
-        include_once 'view'. DS . 'usuarios' . DS . 'readAll.php';
+
+        include_once 'view' . DS . 'usuarios' . DS . 'readAll.php';
     }
 
-    public function logout() {
+    public function logout()
+    {
         unset($_SESSION['login']);
         unset($_SESSION['senha']);
         unset($_SESSION['id_usuario']);
         unset($_SESSION['nome']);
         header('location:index.php');
     }
-
 }
