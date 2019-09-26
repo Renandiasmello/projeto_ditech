@@ -34,19 +34,6 @@ class ReservaModel {
             return $dados;
         }
 
-    /*
-        public function updateModel($id, $nome, $login, $senha) {
-
-            $sql = $this->conn->prepare("UPDATE usuarios SET nome=:nome, login=:login, senha=:senha WHERE id=:id LIMIT 1");
-            $sql->bindValue(':id', $id, PDO::PARAM_INT);
-            $sql->bindValue(':nome', $nome, PDO::PARAM_STR);
-            $sql->bindValue(':login', $login, PDO::PARAM_STR);
-            $sql->bindValue(':senha', $senha, PDO::PARAM_STR);
-            $sql->execute();
-
-        }
-    */
-
         public function deleteModel($id) {
             $sql = $this->conn->prepare("DELETE FROM reservas_salas WHERE id=:id");
             $sql->bindValue(':id', $id, PDO::PARAM_INT);

@@ -20,11 +20,6 @@ class ReservaManipulaController extends ReservaModel {
         return $dados;
     }
 
-    /*
-    public function updateManipula($$id_sala, $id_usuario, $hora_inicial, $hora_final, $data) {
-        $dados = $this->reservaModel->updateModel($id_sala, $id_usuario, $hora_inicial, $hora_final, $data);
-        //return $dados;
-    } */
     public function deleteManipula($id) {
         $this->reservaModel->deleteModel($id);
     }

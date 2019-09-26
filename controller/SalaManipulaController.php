@@ -22,7 +22,6 @@ class SalaManipulaController extends SalaModel {
 
     public function updateManipula($id, $descricao) {
         $dados = $this->salaModel->updateModel($id, $descricao);
-        //return $dados;
     }
 
     public function deleteManipula($id) {
