@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-    //$('.maskedTextField').maskAsNumber();
     if(!$("#data").val().length && !$("#sala").val().length){
         $('.buscar').attr("disabled", "disabled");
     }
@@ -22,19 +21,5 @@ $(document).ready(function() {
 
         }
     });
-/*
-    $("#teste").change(function() {
-        $(".message_salvar").fadeOut("slow");
-    });*/
-
-
-    // $(".buscar").click(function() {
-    //
-    //     let sala = $('#sala').val();
-    //     let data = $('#data').val();
-    //
-    //     //$(".message_salvar").fadeOut("slow");
-    // });
-
 
 });

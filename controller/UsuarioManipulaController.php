@@ -22,7 +22,6 @@ class UsuarioManipulaController extends UsuarioModel {
 
     public function updateManipula($id, $nome, $login, $senha) {
         $dados = $this->usuarioModel->updateModel($id, $nome, $login, $senha);
-        //return $dados;
     }
 
     public function deleteManipula($id) {

@@ -1,11 +1,11 @@
 <?php require_once(V_SESSION); ?>
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <title>Atualizar Dados</title>
         <meta charset="utf-8">
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="public/css/bootstrap.min.css" rel="stylesheet">
+        <script src="public/js/bootstrap.min.js"></script>
     </head>
 
     <body>
