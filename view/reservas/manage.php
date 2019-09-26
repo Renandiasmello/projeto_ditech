@@ -30,12 +30,6 @@ var_dump($array);*/
 
 <!DOCTYPE HTML>
 <html lang="pt-br">
-<!--    <head>-->
-<!--        <title> Reservar Sala</title>-->
-<!--        <meta charset="utf-8">-->
-<!--        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
-<!--        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
-<!--    </head>-->
     <head>
         <meta charset="utf-8">
         <script src="public/js/jquery-3.4.1.min.js"></script>
@@ -57,7 +51,7 @@ var_dump($array);*/
                         <legend>Consulte a disponibilidade por Sala e Dia</legend>
                         <div class="controls">
                             <select id="sala" name="sala">
-                                <option>Selecione uma sala</option>
+                                <option value="">Selecione uma sala</option>
                                 <?php foreach ($dados as $key => $dado): ?>
                                 <?php $selected = ($id_sala && $dado->id == $id_sala ) ? 'selected' : '' ;?>
                                     <?php echo "<option value=\"$dado->id\" $selected>$dado->descricao</option>"; ?>
@@ -96,8 +90,12 @@ var_dump($array);*/
                                                 <td><?php echo $horario->hora_final; ?></td>
                                                 <td><?php echo $horario->usuario; ?></td>
                                                 <td class="text-center">
-                                                    <!--<a class="btn btn-primary" href="index.php?op=editarReserva&id=<?php //echo $dado->id; ?>">Atualizar</a>-->
-                                                    <a class="btn btn-danger" href="index.php?op=deletarReserva&id=<?php echo $horario->id; ?>">Deletar</a>
+                                                    <!--<a class="btn btn-primary" href="index.php?op=editarReserva&id=<?php //echo $horario->id; ?>">Atualizar</a>-->
+                                                    <?php if($horario->id_usuario == 2) { # Comparar com o da Sessão ?>
+                                                        <a class="btn btn-danger" href="index.php?op=deletarReserva&id=<?php echo $horario->id; ?>">Deletar</a>
+                                                    <?php } else { ?>
+                                                        <a class="btn btn-danger" disabled="disabled">Deletar</a>
+                                                    <?php }?>
                                                 </td>
 
                                             </tr>
@@ -136,7 +134,6 @@ var_dump($array);*/
                 <br>
                 <div class="form-actions">
                     <input type="hidden" name="form-submitted" value="1">
-<!--                        <button type="submit" class="btn btn-success">Cadastrar</button>-->
                     <a class="btn btn-default" href="index.php">Voltar</a>
                 </div>
             </form>

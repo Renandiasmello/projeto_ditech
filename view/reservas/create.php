@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="pt-br>
     <head>
         <title>Nova Reserva</title>
         <meta charset="utf-8">

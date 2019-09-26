@@ -1,6 +1,5 @@
 <?php
 
-//include_once 'CrudManipulaController.php';
 include_once 'SalaManipulaController.php';
 include_once 'UsuarioManipulaController.php';
 include_once 'ReservaManipulaController.php';
@@ -13,7 +12,7 @@ class MainController {
     private $reservaManipulaController = null;
 
     public function __construct() {
-        $this->mainManipulaController    = null;//new CrudManipulaController();
+        $this->mainManipulaController    = null;
         $this->salaManipulaController    = new SalaManipulaController();
         $this->usuarioManipulaController = new UsuarioManipulaController();
         $this->reservaManipulaController = new ReservaManipulaController();
@@ -110,8 +109,9 @@ class MainController {
         $id_usuario = isset($_GET['id_usuario']) ? trim($_GET['id_usuario']) : null;
         $hora_inicial = isset($_GET['hi']) ? trim($_GET['hi']) : null;
         $data = isset($_GET['data']) ? trim($_GET['data']) : null;
+
         if (isset($_POST['form-submitted'])) {
-//var_dump($_POST);exit;
+
             $id_sala = isset($_POST['id_sala']) ? trim($_POST['id_sala']) : null;
             $id_usuario = isset($_POST['id_usuario']) ? trim($_POST['id_usuario']) : null;
             $hora_inicial = isset($_POST['hora_inicial']) ? trim($_POST['hora_inicial']) : null;
@@ -122,7 +122,6 @@ class MainController {
             $dados = $this->reservaManipulaController->createManipula($id_sala, $id_usuario, $hora_inicial, $hora_final, $data);
             header('Location: index.php?op=manageReserva');
 
-            //return $dados;
         }
 
         include_once 'view'. DS . 'reservas' . DS . 'create.php';
@@ -152,7 +151,6 @@ class MainController {
             $dados = $this->salaManipulaController->createManipula($descricao);
             header('Location: index.php?op=listarSalas');
 
-            return $dados;
         }
 
         include_once 'view'. DS . 'salas' . DS . 'create.php';
@@ -204,7 +202,6 @@ class MainController {
             $dados = $this->usuarioManipulaController->createManipula($nome, $login, $senha);
             header('Location: index.php?op=listarUsuarios');
 
-            return $dados;
         }
 
         include_once 'view' . DS . 'usuarios' . DS . 'create.php';
@@ -245,71 +242,7 @@ class MainController {
         $dados = $this->usuarioManipulaController->readManipula($id);
         include_once 'view' . DS . 'usuarios' . DS . 'delete.php';
     }
-/*
-    public function create() {
 
-        $nome = '';
-        $email = '';
-        $telefone = '';
-
-        if (isset($_POST['form-submitted'])) {
-
-            $nome = isset($_POST['nome']) ? trim($_POST['nome']) : null;
-            $email = isset($_POST['email']) ? trim($_POST['email']) : null;
-            $telefone = isset($_POST['telefone']) ? trim($_POST['telefone']) : null;
-
-            $dados = $this->crudManipulaController->createManipula($nome, $email, $telefone);
-            header('Location: index.php');
-
-            return $dados;
-        }
-
-        include_once 'view' . DS . 'create.php';
-    }
-
-    public function read() {
-        $id = isset($_GET['id']) ? $_GET['id'] : null;
-
-        $dados = $this->crudManipulaController->readManipula($id);
-        include_once 'view' . DS . 'read.php';
-    }
-
-    public function update() {
-
-        $nome = '';
-        $email = '';
-        $telefone = '';
-        $id = isset($_GET['id']) ? $_GET['id'] : null;
-
-        $dados = $this->crudManipulaController->readManipula($id);
-
-        if (isset($_POST['form-submitted'])) {
-
-            $nome = isset($_POST['nome']) ? trim($_POST['nome']) : null;
-            $email = isset($_POST['email']) ? trim($_POST['email']) : null;
-            $telefone = isset($_POST['telefone']) ? trim($_POST['telefone']) : null;
-
-            $dados = $this->crudManipulaController->updateManipula($id, $nome, $email, $telefone);
-            header('Location: index.php');
-            return $dados;
-        }
-
-        include_once 'view' . DS . 'update.php';
-    }
-
-    public function delete() {
-
-        $id = isset($_GET['id']) ? $_GET['id'] : null;
-
-        if (isset($_POST['form-submitted'])) {
-            $dados = $this->crudManipulaController->deleteManipula($id);
-            header('Location: index.php');
-        }
-
-        $dados = $this->crudManipulaController->readManipula($id);
-        include_once 'view' . DS . 'delete.php';
-    }
-*/
     public function readIndex() {
         //$dados = $this->crudManipulaController->readAllManipula();
         include_once 'view' . DS . 'index.php';
