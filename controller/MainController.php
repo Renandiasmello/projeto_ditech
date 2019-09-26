@@ -97,19 +97,27 @@ class MainController {
 
     public function createReserva() {
 
-        $descricao = '';
-var_dump($_GET);exit;
-        if (isset($_POST['form-submitted'])) {
-
-            $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : null;
-
-            $dados = $this->reservaManipulaController->createManipula($descricao);
-            header('Location: index.php?op=listarSalas');
-
-            return $dados;
+        $id_sala = isset($_GET['sala']) ? trim($_GET['sala']) : null;
+        $sala = '';
+        if($id_sala){
+            $dados_sala = $this->salaManipulaController->readManipula($id_sala);
+            $sala = $dados_sala->descricao;
         }
 
-        include_once 'view'. DS . 'salas' . DS . 'create.php';
+        $id_usuario = isset($_GET['id_usuario']) ? trim($_GET['id_usuario']) : null;
+        $hora_inicial = isset($_GET['hi']) ? trim($_GET['hi']) : null;
+        $data = isset($_GET['data']) ? trim($_GET['data']) : null;
+//        if (isset($_POST['form-submitted'])) {
+//
+//            $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : null;
+//
+//            $dados = $this->reservaManipulaController->createManipula($descricao);
+//            header('Location: index.php?op=listarSalas');
+//
+//            return $dados;
+//        }
+
+        include_once 'view'. DS . 'reservas' . DS . 'create.php';
     }
 
     public function createSala() {

@@ -26,8 +26,8 @@
                         <tr>
                             <td>
                                 <a href="index.php?op=manageReserva" class="btn btn-success">Reservas</a>
-                                <a class="btn btn-info" href="index.php?op=listarSalas<?php //echo $dado->id; ?>">Salas</a>
-                                <a class="btn btn-info" href="index.php?op=listarUsuarios<?php //echo $dado->id; ?>">Usuários</a>
+                                <a class="btn btn-info" href="index.php?op=listarSalas">Salas</a>
+                                <a class="btn btn-info" href="index.php?op=listarUsuarios">Usuários</a>
                             </td>
                         </tr>
                     </tbody>
