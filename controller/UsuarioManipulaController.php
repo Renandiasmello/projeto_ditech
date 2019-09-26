@@ -33,4 +33,9 @@ class UsuarioManipulaController extends UsuarioModel {
         $dados = $this->usuarioModel->readAllModel();
         return $dados;
     }
+
+    public function validaLogin($login, $senha) {
+        $dados = $this->usuarioModel->validaLoginModel($login, $senha);
+        return $dados;
+    }
 }

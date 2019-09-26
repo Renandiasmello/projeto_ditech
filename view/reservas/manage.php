@@ -1,32 +1,4 @@
-<?php
-
-//echo date('d-m-Y');exit;
-//var_dump($dados);exit;
-//var_dump($lista_horarios);exit;
-//var_dump($id_sala);
-
-
-//var_dump($lista_horarios);
-/*
-$array = array();
-foreach ($lista_horarios as $lista){
-//    var_dump($lista);
-    $array[$lista->hora_inicial] = $lista;
-}
-
-foreach ($array as $key => $item){
-    for($i=01; $i<=24; $i++){
-echo $i . '<br>';
-//        if($i != $key){
-//
-//        }
-    }
-}
-
-var_dump($array);*/
-//var_dump(isset($id_sala));
-//exit;
-?>
+<?php require_once(V_SESSION); ?>
 
 <!DOCTYPE HTML>
 <html lang="pt-br">
@@ -41,7 +13,7 @@ var_dump($array);*/
     <body>
         <div class="container">
             <div class="row"><br />
-                <h1><strong><a href="index.php"> Reservar Salas </a></strong></h1><br />
+                <h1><strong><a href="home.php"> Reservar Salas </a></strong></h1><br />
             </div>
             <form class="form-horizontal" action="" method="post">
                 <?php $id_sala = isset($id_sala) ? $id_sala : null;
@@ -90,9 +62,9 @@ var_dump($array);*/
                                                 <td><?php echo $horario->hora_final; ?></td>
                                                 <td><?php echo $horario->usuario; ?></td>
                                                 <td class="text-center">
-                                                    <!--<a class="btn btn-primary" href="index.php?op=editarReserva&id=<?php //echo $horario->id; ?>">Atualizar</a>-->
-                                                    <?php if($horario->id_usuario == 2) { # Comparar com o da Sessão ?>
-                                                        <a class="btn btn-danger" href="index.php?op=deletarReserva&id=<?php echo $horario->id; ?>">Deletar</a>
+                                                    <!--<a class="btn btn-primary" href="home.php?op=editarReserva&id=<?php //echo $horario->id; ?>">Atualizar</a>-->
+                                                    <?php if($horario->id_usuario == $_SESSION['id_usuario']) { # Comparar com o da Sessão ?>
+                                                        <a class="btn btn-danger" href="home.php?op=deletarReserva&id=<?php echo $horario->id; ?>">Deletar</a>
                                                     <?php } else { ?>
                                                         <a class="btn btn-danger" disabled="disabled">Deletar</a>
                                                     <?php }?>
@@ -104,7 +76,7 @@ var_dump($array);*/
                                                 <td> (<?php echo ($i < 10 ? '0'.$i.':00:00' : $i.':00:00') ?>)</td>
                                                 <td colspan="2" class=""> Disponível para reserva</td>
                                                 <td class="text-center">
-                                                    <a class="btn btn-primary" href="index.php?op=reservarSala&sala=<?php echo $id_sala; ?>&id_usuario=<?php echo 2;?>&hi=<?php echo $i;?>&data=<?php echo $data;?>">Reservar</a>
+                                                    <a class="btn btn-primary" href="home.php?op=reservarSala&sala=<?php echo $id_sala; ?>&id_usuario=<?php echo 2;?>&hi=<?php echo $i;?>&data=<?php echo $data;?>">Reservar</a>
                                                 </td>
                                             </tr>
                                         <?php $diff = $i;?>
@@ -118,7 +90,7 @@ var_dump($array);*/
                                             <td> (<?php echo ($i < 10 ? '0'.$i.':00:00' : $i.':00:00') ?>)</td>
                                             <td colspan="2" class=""> Disponível para reserva</td>
                                             <td class="text-center">
-                                                <a class="btn btn-primary" href="index.php?op=reservarSala&sala=<?php echo $id_sala; ?>&id_usuario=<?php echo 2;?>&hi=<?php echo $i;?>&data=<?php echo $data;?>">Reservar</a>
+                                                <a class="btn btn-primary" href="home.php?op=reservarSala&sala=<?php echo $id_sala; ?>&id_usuario=<?php echo 2;?>&hi=<?php echo $i;?>&data=<?php echo $data;?>">Reservar</a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -134,7 +106,7 @@ var_dump($array);*/
                 <br>
                 <div class="form-actions">
                     <input type="hidden" name="form-submitted" value="1">
-                    <a class="btn btn-default" href="index.php">Voltar</a>
+                    <a class="btn btn-default" href="home.php">Voltar</a>
                 </div>
             </form>
         </div>

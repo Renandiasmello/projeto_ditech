@@ -1,3 +1,4 @@
+<?php require_once(V_SESSION); ?>
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -9,13 +10,13 @@
     <body>
         <div class="container">
             <div class="row"><br />
-                <h1><strong><a href="index.php"> Usuários </a></strong></h1><br />
+                <h1><strong><a href="home.php"> Usuários </a></strong></h1><br />
             </div>
 
             <div class="row">
                 <p>
-                    <a class="btn btn-default" href="index.php">Voltar</a>
-                    <a href="index.php?op=novoUsuario" class="btn btn-success">Novo</a>
+                    <a class="btn btn-default" href="home.php">Voltar</a>
+                    <a href="home.php?op=novoUsuario" class="btn btn-success">Novo</a>
                 </p>	
                 <table class="table table-striped table-bordered">
                     <thead>
@@ -33,8 +34,8 @@
                                 <td><?php echo htmlentities($dado->nome); ?></td>
                                 <td><?php echo htmlentities($dado->login); ?></td>
                                 <td class="text-center">
-                                    <a class="btn btn-primary" href="index.php?op=editarUsuario&id=<?php echo $dado->id; ?>">Atualizar</a>
-                                    <a class="btn btn-danger" href="index.php?op=deletarUsuario&id=<?php echo $dado->id; ?>">Deletar</a>
+                                    <a class="btn btn-primary" href="home.php?op=editarUsuario&id=<?php echo $dado->id; ?>">Atualizar</a>
+                                    <a class="btn btn-danger" href="home.php?op=deletarUsuario&id=<?php echo $dado->id; ?>">Deletar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

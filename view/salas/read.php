@@ -1,3 +1,4 @@
+<?php require_once(V_SESSION); ?>
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -42,7 +43,7 @@
                     </div>
                     <br>
                     <div class="form-actions">
-                        <a class="btn btn-default" href="index.php">Voltar</a>
+                        <a class="btn btn-default" href="home.php">Voltar</a>
                     </div>
                 </div>
             </div>

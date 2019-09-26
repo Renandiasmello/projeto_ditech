@@ -1,3 +1,4 @@
+<?php require_once(V_SESSION); ?>
 <!DOCTYPE HTML>
 <html lang="pt-br>
     <head>
@@ -41,9 +42,9 @@
 
                     <div class="form-actions">
                         <input type="hidden" name="form-submitted" value="1">
-                        <input type="hidden" name="id_usuario" value="2">
+                        <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['id_usuario']?>">
                         <button type="submit" class="btn btn-success">Cadastrar</button>
-                        <a class="btn btn-default" href="index.php?op=manageReserva">Voltar</a>
+                        <a class="btn btn-default" href="home.php?op=manageReserva">Voltar</a>
                     </div>
                 </form>
             </div>

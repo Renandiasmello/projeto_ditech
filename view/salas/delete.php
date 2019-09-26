@@ -1,3 +1,4 @@
+<?php require_once(V_SESSION); ?>
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -27,7 +28,7 @@
                     <div class="form-actions">
                         <input type="hidden" name="form-submitted" value="1">
                         <button type="submit" class="btn btn-danger">Deletar</button>
-                        <a class="btn btn-default" href="index.php?op=listarSalas">Voltar</a>
+                        <a class="btn btn-default" href="home.php?op=listarSalas">Voltar</a>
                     </div>
                 </form>
             </div>

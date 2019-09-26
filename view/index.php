@@ -1,3 +1,4 @@
+<?php require_once(V_SESSION); ?>
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -9,7 +10,7 @@
     <body>
         <div class="container">
             <div class="row"><br />
-                <h2><strong><a href="index.php">Sistema de Reserva de Salas </a></strong></h2><br />
+                <h2><strong><a href="home.php">Sistema de Reserva de Salas </a></strong></h2><br />
             </div>
 
             <div class="row">
@@ -25,9 +26,9 @@
                     <tbody>
                         <tr>
                             <td>
-                                <a href="index.php?op=manageReserva" class="btn btn-success">Reservas</a>
-                                <a class="btn btn-info" href="index.php?op=listarSalas">Salas</a>
-                                <a class="btn btn-info" href="index.php?op=listarUsuarios">Usuários</a>
+                                <a href="home.php?op=manageReserva" class="btn btn-success">Reservas</a>
+                                <a class="btn btn-info" href="home.php?op=listarSalas">Salas</a>
+                                <a class="btn btn-info" href="home.php?op=listarUsuarios">Usuários</a>
                             </td>
                         </tr>
                     </tbody>

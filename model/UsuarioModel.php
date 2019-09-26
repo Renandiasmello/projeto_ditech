@@ -27,6 +27,15 @@ class UsuarioModel {
         return $dados;
     }
 
+    public function validaLoginModel($login, $senha) {
+        $sql = $this->conn->prepare("SELECT * FROM usuarios WHERE login=:login AND senha=:senha");
+        $sql->bindValue(':login', $login, PDO::PARAM_STR);
+        $sql->bindValue(':senha', $senha, PDO::PARAM_STR);
+        $sql->execute();
+        $dados = $sql->fetch(PDO::FETCH_OBJ);
+        return $dados;
+    }
+
     public function updateModel($id, $nome, $login, $senha) {
 
         $sql = $this->conn->prepare("UPDATE usuarios SET nome=:nome, login=:login, senha=:senha WHERE id=:id LIMIT 1");

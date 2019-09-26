@@ -60,6 +60,9 @@ class MainController {
                 case 'deletarReserva':
                     $this->deleteReserva();
                     break;
+                case 'logoutSistema':
+                    $this->logout();
+                    break;
                 case 'novo':
                     $this->create();
                     break;
@@ -120,7 +123,7 @@ class MainController {
             $data = isset($_POST['data']) ? trim($_POST['data']) : null;
 
             $dados = $this->reservaManipulaController->createManipula($id_sala, $id_usuario, $hora_inicial, $hora_final, $data);
-            header('Location: index.php?op=manageReserva');
+            header('Location: home.php?op=manageReserva');
 
         }
 
@@ -133,7 +136,7 @@ class MainController {
 
         if (isset($_POST['form-submitted'])) {
             $dados = $this->reservaManipulaController->deleteManipula($id);
-            header('Location: index.php?op=manageReserva');
+            header('Location: home.php?op=manageReserva');
         }
 
         $dados = $this->reservaManipulaController->readManipula($id);
@@ -149,7 +152,7 @@ class MainController {
             $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : null;
 
             $dados = $this->salaManipulaController->createManipula($descricao);
-            header('Location: index.php?op=listarSalas');
+            header('Location: home.php?op=listarSalas');
 
         }
 
@@ -167,7 +170,7 @@ class MainController {
             $descricao = isset($_POST['descricao']) ? trim($_POST['descricao']) : null;
 
             $dados = $this->salaManipulaController->updateManipula($id, $descricao);
-            header('Location: index.php?op=listarSalas');
+            header('Location: home.php?op=listarSalas');
             return $dados;
         }
 
@@ -180,7 +183,7 @@ class MainController {
 
         if (isset($_POST['form-submitted'])) {
             $dados = $this->salaManipulaController->deleteManipula($id);
-            header('Location: index.php?op=listarSalas');
+            header('Location: home.php?op=listarSalas');
         }
 
         $dados = $this->salaManipulaController->readManipula($id);
@@ -200,7 +203,7 @@ class MainController {
             $senha = isset($_POST['senha']) ? trim($_POST['senha']) : null;
 
             $dados = $this->usuarioManipulaController->createManipula($nome, $login, $senha);
-            header('Location: index.php?op=listarUsuarios');
+            header('Location: home.php?op=listarUsuarios');
 
         }
 
@@ -223,7 +226,7 @@ class MainController {
             $senha = isset($_POST['senha']) ? trim($_POST['senha']) : null;
 
             $dados = $this->usuarioManipulaController->updateManipula($id, $nome, $login, $senha);
-            header('Location: index.php?op=listarUsuarios');
+            header('Location: home.php?op=listarUsuarios');
             return $dados;
         }
 
@@ -236,7 +239,7 @@ class MainController {
 
         if (isset($_POST['form-submitted'])) {
             $dados = $this->usuarioManipulaController->deleteManipula($id);
-            header('Location: index.php?op=listarUsuarios');
+            header('Location: home.php?op=listarUsuarios');
         }
 
         $dados = $this->usuarioManipulaController->readManipula($id);
@@ -256,6 +259,14 @@ class MainController {
     public function readAllUsuarios() {
         $dados = $this->usuarioManipulaController->readAllManipula();
         include_once 'view'. DS . 'usuarios' . DS . 'readAll.php';
+    }
+
+    public function logout() {
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        unset($_SESSION['id_usuario']);
+        unset($_SESSION['nome']);
+        header('location:index.php');
     }
 
 }
