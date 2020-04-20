@@ -18,6 +18,7 @@ Este sistema deve obedecer os seguintes requisitos:
 - Deverá ser possível a remoção da reserva de uma sala apenas pelo próprio reservante.
 
 Para executar você precisa:
+- Php >= 7
 - Ter Mysqli and pdo_mysql instalado e habilitado
-- Executar o arquivo (dump/dump.sql) no seu banco de dados Mysql para a criação da estrutura;
+- Executar o arquivo (dump/dump.sql) no seu banco de dados Mysql para a criação da estrutura
 - Acessar o diretório (http://seuservidor/projeto_ditech/).
