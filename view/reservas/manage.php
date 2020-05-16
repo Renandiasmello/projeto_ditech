@@ -80,7 +80,6 @@
                                                     <td><?php echo $horario->hora_final; ?></td>
                                                     <td><?php echo $horario->usuario; ?></td>
                                                     <td class="text-center">
-                                                        <!--<a class="btn btn-primary" href="home.php?op=editarReserva&id=<?php //echo $horario->id; ?>">Atualizar</a>-->
                                                         <?php if($horario->id_usuario == $_SESSION['id_usuario']) { # Comparar com o da Sessão ?>
                                                             <a class="btn btn-danger" href="home.php?op=deletarReserva&id=<?php echo $horario->id; ?>">Deletar</a>
                                                         <?php } else { ?>
